@@ -70,9 +70,16 @@ def getData(start,end,filters=None):
 			for row in event:
 				title_temp=''
 				if not row[6]==None:
-					title_temp=row[4]+('\n').encode('utf8')+str(row[3])+('\n').encode('utf8')+row[6]
+					if not row[4]==None:
+						title_temp=row[4]+('\n').encode('utf8')+str(row[3])+('\n').encode('utf8')+row[6]
+					else:
+						title_temp=row[3]+('\n').encode('utf8')+row[6]
 				else:
-					title_temp=row[4]+('\n').encode('utf8')+row[3]
+					if not row[4]==None:
+						title_temp=row[4]+('\n').encode('utf8')+row[3]
+					else:
+						title_temp=row[3]
+		
 				if not row[7]==None:
 					row_sevan=row[7]
 				else:
