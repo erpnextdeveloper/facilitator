@@ -71,14 +71,26 @@ def getData(start,end,filters=None):
 				title_temp=''
 				if not row[6]==None:
 					if not row[4]==None:
-						title_temp=row[4]+('\n').encode('utf8')+str(row[3])+('\n').encode('utf8')+row[6]
+						if not row[3]==None:
+							title_temp=row[4]+('\n').encode('utf8')+str(row[3])+('\n').encode('utf8')+row[6]
+						else:
+							title_temp=row[4]+('\n').encode('utf8')+row[6]
 					else:
-						title_temp=row[3]+('\n').encode('utf8')+row[6]
+						if not row[3]==None:
+							title_temp=row[3]+('\n').encode('utf8')+row[6]
+						else:
+							title_temp=row[6]
 				else:
 					if not row[4]==None:
-						title_temp=row[4]+('\n').encode('utf8')+row[3]
+						if not row[3]==None:
+							title_temp=row[4]+('\n').encode('utf8')+row[3]
+						else:
+							title_temp=row[4]
 					else:
-						title_temp=row[3]
+						if not row[3]==None:	
+							title_temp=row[3]
+						else:
+							title_temp='No Info'
 		
 				if not row[7]==None:
 					row_sevan=row[7]
