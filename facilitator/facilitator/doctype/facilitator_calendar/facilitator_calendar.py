@@ -68,10 +68,11 @@ def getData(start,end,filters=None):
 
 		if event:
 			for row in event:
+				title_temp=''
 				if not row[6]==None:
-					row_six=row[6]
+					title_temp=row[4]+('\n').encode('utf8')+str(row[3])+('\n').encode('utf8')+row[6]
 				else:
-					row_six=''
+					title_temp=row[4]+('\n').encode('utf8')+row[3]
 				if not row[7]==None:
 					row_sevan=row[7]
 				else:
@@ -80,7 +81,7 @@ def getData(start,end,filters=None):
 				item["start_on"]=row[1] if not row[2]==None else add_days(row[1],0)
 				item["end_on"]=row[2] if not row[2]==None else add_days(row[1],0)
 				item["name"]=row[0]
-				item["title"]=str(row[4])+'\n'+str(row[3])+'\n'+str(row_six)
+				item["title"]=title_temp
 				item["doctype"]="Event"
 				item["color"]=getColor(row_sevan)
 				event_obj.append(item)
